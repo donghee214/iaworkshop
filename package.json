@@ -19,7 +19,9 @@
     "cfenv": "^1.0.x",
     "cloudant": "^1.7.x",
     "dotenv": "^4.0.0",
-    "express": "^4.15.x"
+    "express": "^4.15.x",
+    "socket.io":"^0.9.19",
+    "impress-server":"git://github.com/donghee214/impressbest2#master"
   },
   "author": "IBM Corp",
   "license": "Apache-2.0"
