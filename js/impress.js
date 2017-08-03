@@ -580,9 +580,15 @@
         var next = function() {
             var next = steps.indexOf( activeStep ) + 1;
             next = next < steps.length ? steps[ next ] : steps[ 0 ]
-            console.log(next)
+            // console.log(activeStep)
             return goto( next );
         };
+        var escape = function () {
+          // var next = steps.indexOf( activeStep ) + 1;
+          // next = next < steps.length ? steps[ next ] : steps[ 0 ];
+          return goto(3);
+        };
+
 
         // Adding some useful classes to step elements.
         //
@@ -657,6 +663,7 @@
             init: init,
             goto: goto,
             next: next,
+            escape: escape,
             prev: prev
         } );
 
@@ -705,7 +712,7 @@
         // Prevent default keydown action when one of supported key is pressed.
         document.addEventListener( "keydown", function( event ) {
             if ( event.keyCode === 9 ||
-               ( event.keyCode >= 32 && event.keyCode <= 34 ) ||
+               ( event.keyCode >= 32 && event.keyCode <= 27 ) ||
                ( event.keyCode >= 37 && event.keyCode <= 40 ) ) {
                 event.preventDefault();
             }
@@ -727,6 +734,8 @@
         //   as another way to moving to next step... And yes, I know that for the sake of
         //   consistency I should add [shift+tab] as opposite action...
         document.addEventListener( "keyup", function( event ) {
+
+  
 
             if ( event.shiftKey || event.altKey || event.ctrlKey || event.metaKey ) {
                 return;
@@ -753,6 +762,9 @@
                 }
 
                 event.preventDefault();
+            }
+            if (event.keyCode == 27) {
+              api.escape()
             }
         }, false );
 

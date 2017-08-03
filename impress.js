@@ -584,6 +584,8 @@
             return goto( next );
         };
 
+        
+
         // Adding some useful classes to step elements.
         //
         // All the steps that have not been shown yet are given `future` class.
